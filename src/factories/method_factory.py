@@ -23,7 +23,7 @@ from avalanche.training.supervised import *
 from avalanche.training.supervised.mer import MER
 from src.factories.benchmark_factory import DS_CLASSES, DS_SIZES
 from src.strategies import (ER_ACE, AGEMPlugin, LwFPlugin, OnlineICaRL,
-                            OnlineICaRLLossPlugin)
+                            OnlineICaRLLossPlugin, SCR_mod)
 from src.toolkit.cumulative_accuracies import CumulativeAccuracyPluginMetric
 from src.toolkit.json_logger import JSONLogger
 from src.toolkit.lambda_scheduler import LambdaScheduler
@@ -130,7 +130,7 @@ def create_strategy(
         plugins.append(lwf_plugin)
 
     elif name == "scr":
-        strategy = "SCR"
+        strategy = "SCR_mod"
 
         # Modify model to fit
         last_layer_name, in_features = utils.get_last_layer_name(model)
@@ -147,7 +147,7 @@ def create_strategy(
         strategy_dict["model"] = model
 
         specific_args = utils.extract_kwargs(
-            ["mem_size", "temperature", "batch_size_mem"], strategy_kwargs
+            ["mem_size", "temperature", "batch_size_mem", "use_only_transforms"], strategy_kwargs
         )
 
         if "criterion" in strategy_dict:
