@@ -5,7 +5,7 @@
 Clone this repository
 
 ```
-git clone --recurse-submodules https://github.com/AlbinSou/ocl_survey.git
+git clone --recurse-submodules https://github.com/giacomo-cgn/ocl_experiments.git
 ```
 
 Create a new environment with python 3.10
@@ -29,10 +29,10 @@ cd ../
 pip install -r requirements.txt
 ```
 
-Set your PYTHONPATH as the root of the project
+Set your PYTHONPATH as the root of the project (subsitute /home/.../ with your local path)
 
 ```
-conda env config vars set PYTHONPATH=/home/.../ocl_survey
+conda env config vars set PYTHONPATH=/home/.../ocl_experiments
 ```
 
 In order to let the scripts know where to fetch and log data, you should also create a **deploy config**, indicating where the results should be stored and the datasets fetched. Either add a new one or **change the content of config/deploy/default.yaml**
